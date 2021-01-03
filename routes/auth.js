@@ -43,12 +43,13 @@ process.on('SIGINT',() =>{
 
 
 
+
 router.post("/signup",async (req, res, next)=>{
 try{
         const {name, email, github, linkdin, password,profilePic,sampuleVideo}=req.body;
    
           // console.log(name +" "+email +" "+github +" "+linkdin +" "+password +" "+rePassword +" "+profilePic +" "+sampuleVideo);
-    if(!email || !name || !password || !profilePic || !sampuleVideo) throw createError.NotAcceptable()
+    if(!email || !name || !password || !profilePic || !sampuleVideo) throw createError.NotAcceptable();
       const result= await authSchema.validateAsync(req.body)
      
         const doExit= await user.findOne({email:result.email});
@@ -78,7 +79,7 @@ router.post("/signin", async (req, res, next)=>{
     const doExit = await user.findOne({email:result.email})
     if(!doExit) throw createError.NotFound(result.email+" is not registred.")
     const isMatch =await bcrypt.compare(result.password,doExit.password)
-    if(!isMatch) throw createError.Unauthorized()
+    if(!isMatch) throw createError.Unauthorized("password is incorrect")
     
     const token = await signAccesToken(doExit.id)
   const refresToken= await refreshToken(doExit.id)

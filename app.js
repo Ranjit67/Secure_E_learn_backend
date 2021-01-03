@@ -11,7 +11,11 @@ const app=express();
 
 
 app.use(morgan("dev"))
-app.use(cors());
+app.use(cors())
+
+app.get("/most", (req,res,next)=>{
+  res.send({message:"modan marunu tu."});
+})
 
 mongoose.connect(process.env.MONGO_DB,{useNewUrlParser: true ,useUnifiedTopology: true });
 

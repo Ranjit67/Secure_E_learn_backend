@@ -10,22 +10,19 @@ password:joi.string()
             .min(8)
             .required(),
 name: joi.string()
-.alphanum()
-.min(3)
-.max(30)
-.required(), 
+            .required()
+            .min(2), 
+
 github:  joi.string()
-.alphanum(),         
+.allow(null).allow('').optional(),         
 linkdin:joi.string()
-.alphanum(), 
+.allow(null).allow('').optional(), 
 
 profilePic:joi.string()
-.min(2)
-.required(),
+.allow(null).allow('').optional(),
 
 sampuleVideo:joi.string()
-.min(2)
-.required()
+.allow(null).allow('').optional()
 });
 
 const userSignin =joi.object({

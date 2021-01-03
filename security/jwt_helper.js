@@ -45,7 +45,7 @@ module.exports={
             const secreat=process.env.ACESS_TOKEN
             const options={
                 audience: userid,
-                expiresIn:"35s"
+                expiresIn:"30s"
             }
             jwt.sign(palode, secreat, options, (err, token)=>{
                 if(err) return console.log(err.message)
@@ -61,9 +61,9 @@ module.exports={
     jwt.verify(token, process.env.ACESS_TOKEN, (err,paylod)=>{
         if(err){
             if(err.name==="TokenExpiredError"){
-                return next(createError.GatewayTimeout()) 
+                return next(createError.MethodNotAllowed("Token has expired."))     //status code 407
             } else{
-                return next(createError.Unauthorized("You need to logIn"))
+                return next(createError.Unauthorized("token haserase."))
             }
         }
         
@@ -86,7 +86,7 @@ module.exports={
             }
             jwt.sign(palode, secreat, options, (err, token)=>{
                 if(err) return console.log(err.message)
-                client.set(userid, token, 'EX', 90 * 24 * 60 * 60, (err, result)=>{
+                client.set(userid, token, 'EX',  24 * 60 * 60, (err, result)=>{
                     if(err) {return reject(err)}
                    else {console.log("data inserted") } 
                     })
