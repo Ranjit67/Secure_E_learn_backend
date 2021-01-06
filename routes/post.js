@@ -33,7 +33,7 @@ router.post("/createplaylist", verifyToken, async (req, res, next)=>{
         const user = await User.findById(userId)
         // res.send(user)
         const doExit = await playlist.findOne({postedBy: userId, title: title})
-        if(doExit) throw createError.NotAcceptable("This title is already exit.")
+        if(doExit) throw createError.Conflict("This title is already exit.")
        
         const Playlist = new playlist({
             title,
@@ -42,7 +42,7 @@ router.post("/createplaylist", verifyToken, async (req, res, next)=>{
         })
         const savePlaylist = await Playlist.save()
         if(!savePlaylist) throw createError.InternalServerError("check the connection.")
-        res.send(savePlaylist)
+        res.send({savePlaylist})
                                                     //After this route it will redirect to dashboard.
     }catch(error){
         next(error)

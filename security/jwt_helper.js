@@ -63,7 +63,7 @@ module.exports={
             if(err.name==="TokenExpiredError"){
                 return next(createError.MethodNotAllowed("Token has expired."))     //status code 407
             } else{
-                return next(createError.Unauthorized("token haserase."))
+                return next(createError.Unauthorized("token has erase."))
             }
         }
         
