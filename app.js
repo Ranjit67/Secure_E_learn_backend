@@ -1,7 +1,7 @@
 const express= require("express");
 require('dotenv').config();
 const mongoose= require("mongoose");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 var createError = require('http-errors')
 const cors = require('cors');
 
@@ -10,7 +10,7 @@ const cors = require('cors');
 const app=express();
 
 
-app.use(morgan("dev"))
+// app.use(morgan("dev"))
 app.use(cors())
 
 app.get("/most", (req,res,next)=>{
