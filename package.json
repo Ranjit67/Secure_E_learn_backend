@@ -4,7 +4,9 @@
   "description": "sequer e learning in dataminig technice",
   "main": "app.js",
   "scripts": {
-    "start":"PROD=true node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"PROD=true node app.js",
+    "postinstall":"cd ../lacture_board && npm start"
   },
   "keywords": [],
   "author": "Ranjit sahoo",
