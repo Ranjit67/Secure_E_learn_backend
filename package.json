@@ -4,7 +4,6 @@
   "description": "sequer e learning in dataminig technice",
   "main": "app.js",
   "scripts": {
-    "postinstall": "npm run build",
     "start":"PROD=true node app.js"
   },
   "keywords": [],
