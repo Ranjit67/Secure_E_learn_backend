@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"PROD=true node app.js",
-    "postinstall":"cd ../lacture_board && npm start"
+    "start":"PROD=true node app.js"
+    
   },
   "keywords": [],
   "author": "Ranjit sahoo",
