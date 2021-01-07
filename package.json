@@ -1,13 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "sequer e learning in dataminig technice",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ranjit sahoo",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
