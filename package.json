@@ -4,7 +4,8 @@
   "description": "sequer e learning in dataminig technice",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "postinstall": "npm run build",
+    "start":"PROD=true node app.js"
   },
   "keywords": [],
   "author": "Ranjit sahoo",
