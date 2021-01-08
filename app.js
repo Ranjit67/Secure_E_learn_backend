@@ -14,12 +14,12 @@ app.use(morgan("dev"))
 // app.use(cors())
 
 //access api middelware 
-let allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header('Access-Control-Allow-Headers', "*");
-  next();
-}
-app.use(allowCrossDomain);
+// let allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', "*");
+//   res.header('Access-Control-Allow-Headers', "*");
+//   next();
+// }
+// app.use(allowCrossDomain);
 
 app.get("/", (req,res,next)=>{
   res.send("modan marunu tu.");
