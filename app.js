@@ -47,8 +47,8 @@ status:err.status,
 
 
 
-
-app.listen(process.env.PORT || 9000,"0.0.0.0",function(){
+let port = process.env.PORT || 9000;
+app.listen(port,"0.0.0.0",function(){
   console.log("The port 9000 is ready to start...");
 })
 
