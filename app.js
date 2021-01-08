@@ -29,16 +29,16 @@ mongoose.connection.on("error",(err)=>{
 app.use(express.json());
 
 //access api middelware 
-app.use( (req, res, next)=> {
-
-  res.header('Access-Control-Allow-Origin', '*');
-
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Accept, Authorization, Content-Type');
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept,Authorization"
+  );
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
   next();
 });
+
 
 app.use(require("./routes/auth"));
 
