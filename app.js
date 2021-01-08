@@ -1,17 +1,17 @@
 const express= require("express");
 require('dotenv').config();
 const mongoose= require("mongoose");
-// const morgan = require("morgan");
+const morgan = require("morgan");
 var createError = require('http-errors')
-const cors = require('cors');
+// const cors = require('cors');
 
 
 
 const app=express();
 
 
-// app.use(morgan("dev"))
-app.use(cors())
+app.use(morgan("dev"))
+// app.use(cors())
 
 app.get("/", (req,res,next)=>{
   res.send("modan marunu tu.");
@@ -32,13 +32,13 @@ app.use(express.json());
 app.use(async (req, res, next)=> {
 
   // Website you wish to allow to connect
-  res.headers('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', '*');
 
   // Request methods you wish to allow
-  res.headers('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
   // Request headers you wish to allow
-  res.headers('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Accept, Authorization, Content-Type');
 
   next();
 });
