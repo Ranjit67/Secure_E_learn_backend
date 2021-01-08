@@ -29,15 +29,12 @@ mongoose.connection.on("error",(err)=>{
 app.use(express.json());
 
 //access api middelware 
-app.use(async (req, res, next)=> {
+app.use( (req, res, next)=> {
 
-  // Website you wish to allow to connect
   res.header('Access-Control-Allow-Origin', '*');
 
-  // Request methods you wish to allow
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Accept, Authorization, Content-Type');
 
   next();
