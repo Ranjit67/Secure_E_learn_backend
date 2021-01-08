@@ -13,13 +13,16 @@ const app=express();
 app.use(morgan("dev"))
 // app.use(cors())
 
-//access api middelware 
-// let allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', "*");
-//   res.header('Access-Control-Allow-Headers', "*");
-//   next();
-// }
-// app.use(allowCrossDomain);
+// access api middelware 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept,Authorization"
+  );
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
+  next();
+});
 
 app.get("/", (req,res,next)=>{
   res.send("modan marunu tu.");
