@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose= require("mongoose");
 const morgan = require("morgan");
 var createError = require('http-errors')
-const cors = require('cors');
+// const cors = require('cors');
 
 
 
@@ -11,7 +11,7 @@ const app=express();
 
 
 app.use(morgan("dev"))
-app.use(cors())
+// app.use(cors())
 
 //access api middelware 
 app.use(function(req, res, next) {
