@@ -15,12 +15,11 @@ app.use(morgan("dev"))
 
 // access api middelware 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept,Authorization"
-  );
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+    res.setHeader("Access-Control-Allow-Credentials", "false")
+
   next();
 });
 
