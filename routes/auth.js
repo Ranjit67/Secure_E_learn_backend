@@ -94,10 +94,9 @@ router.post("/signin", async (req, res, next)=>{
 // see data 
 router.post("/show", async (req, res, next )=>{
 try{
-  const {id}=req.body
-   await client.get(id, (err,result)=>{
-    res.send({result})
-  })
+  
+    res.send({result:"The result is made."})
+
   // res.send({id})
 }catch(error){
   next(error)

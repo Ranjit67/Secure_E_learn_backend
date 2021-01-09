@@ -3,16 +3,20 @@ require('dotenv').config();
 const mongoose= require("mongoose");
 const morgan = require("morgan");
 var createError = require('http-errors')
+const { createProxyMiddleware } = require('http-proxy-middleware');
+// const cors = require('cors');
 
-const cors = require('cors');
 
 
 const app = express();
+ 
+app.use('/api', 
+createProxyMiddleware({ target: 'https://leacturedot.herokuapp.com',
 
-
+   changeOrigin: true }));
 
 app.use(morgan("dev"))
-app.use(cors())
+// app.use(cors())
 
 
 
