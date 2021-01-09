@@ -4,7 +4,7 @@ const mongoose= require("mongoose");
 const morgan = require("morgan");
 var createError = require('http-errors')
 const { createProxyMiddleware } = require('http-proxy-middleware');
-// const cors = require('cors');
+const cors = require('cors');
 
 
 
@@ -17,28 +17,33 @@ const app = express();
 
 // app.use(morgan("dev"))
 
-// app.use(cors())
+var corsOptions = {
+  origin: 'http://localhost:9000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions))
 
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 // var err = new Error('Not Found');
 //    err.status = 404;
 //    next(err);
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
+//   // Website you wish to allow to connect
+//   res.header('Access-Control-Allow-Origin', '*');
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Request methods you wish to allow
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
+//   // Request headers you wish to allow
+//   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
 
-//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  // Pass to next layer of middleware
-  next();
-});
+//   // Pass to next layer of middleware
+//   next();
+// });
 
 app.get("/", (req,res,next)=>{
   res.send("modan marunu tu.");
