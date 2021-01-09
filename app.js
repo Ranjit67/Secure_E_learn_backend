@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose= require("mongoose");
 const morgan = require("morgan");
 var createError = require('http-errors')
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const proxy = require('http-proxy-middleware');
 // const cors = require('cors');
 const request = require('request');
 
@@ -48,13 +48,13 @@ var corsOptions = {
 // my modification
 
 
-// app.use('/proxy',createProxyMiddleware({
-//   pathRewrite:{
-//     '^proxy/':'/'
-//   },
-//   target:'https://leacturedot.herokuapp.com',
-//   secure:false
-// }))
+app.use('/proxy',proxy.createProxyMiddleware({
+  pathRewrite:{
+    '^proxy/':'/'
+  },
+  target:'https://leacturedot.herokuapp.com',
+  secure:false
+}))
 
 
 
