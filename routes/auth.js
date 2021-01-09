@@ -92,7 +92,7 @@ router.post("/signin", async (req, res, next)=>{
 })
 
 // see data 
-router.post("/show", async (req, res, next )=>{
+router.get("/show", async (req, res, next )=>{
 try{
   
     res.send({result:"The result is made."})
