@@ -15,20 +15,18 @@ const app = express();
 
 //    changeOrigin: true }));
 
-// app.use(morgan("dev"))
+app.use(morgan("dev"))
 
-var corsOptions = {
-  origin: 'http://localhost:9000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// var corsOptions = {
+//   origin: 'http://localhost:9000',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 
 // app.use(function (req, res, next) {
-// var err = new Error('Not Found');
-//    err.status = 404;
-//    next(err);
+
 
 //   // Website you wish to allow to connect
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -39,11 +37,38 @@ app.use(cors(corsOptions))
 //   // Request headers you wish to allow
 //   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
 
-// //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 //   // Pass to next layer of middleware
 //   next();
 // });
+
+
+
+// my modification
+
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/jokes/random', (req, res) => {
+  request(
+    { url: 'https://leacturedot.herokuapp.com/jokes/random' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.send({result:"success"});
+    }
+  )
+});
+
+
+
+
 
 app.get("/", (req,res,next)=>{
   res.send("modan marunu tu.");
