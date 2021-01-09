@@ -4,7 +4,7 @@ const mongoose= require("mongoose");
 const morgan = require("morgan");
 var createError = require('http-errors')
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const cors = require('cors');
+// const cors = require('cors');
 const request = require('request');
 
 
@@ -17,12 +17,12 @@ const app = express();
 
 app.use(morgan("dev"))
 
-// var corsOptions = {
-//   origin: 'http://localhost:9000',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+var corsOptions = {
+  origin: 'http://localhost:9000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
-// app.use(cors(corsOptions))
+// app.use(cors())
 
 
 // app.use(function (req, res, next) {
@@ -48,23 +48,13 @@ app.use(morgan("dev"))
 // my modification
 
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
-app.get('/jokes/random', (req, res) => {
-  request(
-    { url: 'https://leacturedot.herokuapp.com/jokes/random' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
-
-      res.send({result:"success"});
-    }
-  )
-});
+// app.use('/proxy',createProxyMiddleware({
+//   pathRewrite:{
+//     '^proxy/':'/'
+//   },
+//   target:'https://leacturedot.herokuapp.com',
+//   secure:false
+// }))
 
 
 
