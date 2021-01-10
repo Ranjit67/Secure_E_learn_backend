@@ -32,7 +32,7 @@ app.use( function (req, res, next) {
 
 
   // Website you wish to allow to connect
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://leacturedot.herokuapp.com/*');
 
   // Request methods you wish to allow
   
@@ -52,16 +52,7 @@ app.use( function (req, res, next) {
 
 
 
-// my modification
 
-
-// app.use('/proxy',proxy.createProxyMiddleware({
-//   pathRewrite:{
-//     '^proxy/':'/'
-//   },
-//   target:'https://leacturedot.herokuapp.com',
-//   secure:false
-// }))
 
 
 
