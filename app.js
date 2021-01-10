@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // app.use(cors())
 
 
-app.use(function (req, res, next) {
+app.all('*', function (req, res, next) {
 
 
   // Website you wish to allow to connect
