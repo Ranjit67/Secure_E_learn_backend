@@ -17,44 +17,44 @@ const app = express();
 
 app.use(morgan("dev"))
 
-var corsOptions = {
-  origin: 'http://localhost:9000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// var corsOptions = {
+//   origin: 'http://localhost:9000',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 // app.use(cors())
 
 
-// app.use(function (req, res, next) {
+app.use(function (req, res, next) {
 
 
-//   // Website you wish to allow to connect
-//   res.header('Access-Control-Allow-Origin', '*');
+  // Website you wish to allow to connect
+  res.header('Access-Control-Allow-Origin', '*');
 
-//   // Request methods you wish to allow
-//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // Request methods you wish to allow
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-//   // Request headers you wish to allow
-//   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
+  // Request headers you wish to allow
+  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
 
-//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-//   // Pass to next layer of middleware
-//   next();
-// });
+  // Pass to next layer of middleware
+  next();
+});
 
 
 
 // my modification
 
 
-app.use('/proxy',proxy.createProxyMiddleware({
-  pathRewrite:{
-    '^proxy/':'/'
-  },
-  target:'https://leacturedot.herokuapp.com',
-  secure:false
-}))
+// app.use('/proxy',proxy.createProxyMiddleware({
+//   pathRewrite:{
+//     '^proxy/':'/'
+//   },
+//   target:'https://leacturedot.herokuapp.com',
+//   secure:false
+// }))
 
 
 
