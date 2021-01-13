@@ -20,21 +20,17 @@ app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-// var corsOptions = {
-//   origin: 'http://localhost:9000',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
 
-// app.use(cors())
 
 
 app.use( function (req, res, next) {
 
 
   // Website you wish to allow to connect
-  res.header('Access-Control-Allow-Origin', 'https://leacturedot.herokuapp.com');
+  //restricted link - https://leacturedot.herokuapp.com
+  res.header('Access-Control-Allow-Origin', '*');
 
-  // Request methods you wish to allow
+  
   
 
   // Request headers you wish to allow
@@ -42,11 +38,13 @@ app.use( function (req, res, next) {
 
 // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  // Pass to next layer of middleware
+  
   if(req.method === 'OPTIONS'){
+    // Request methods you wish to allow
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     return res.status(200).json({})
   }
+  // Pass to next layer of middleware
   next();
 });
 
