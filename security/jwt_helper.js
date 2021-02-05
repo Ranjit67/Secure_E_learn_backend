@@ -8,7 +8,7 @@ const redis = require("redis");
 
 const client = redis.createClient({
   
-    url :'redis://redis-18779.c14.us-east-1-2.ec2.cloud.redislabs.com:18779'
+    url :process.env.REDIS_URL
   })
   client.auth(process.env.REDIS_PASSWORD);
   

@@ -133,7 +133,7 @@ if(!refreshToken) throw createError.Unauthorized()
 // res.send({refreshToken})
 const userid = await refreshTokenVerify(refreshToken)
 client.DEL(userid, (err ,token)=>{
-  if(err) throw createError.InternalServerError()
+  if(err) throw createError.InternalServerError("interiar error")
   res.send({message:"Logout successfully."})
 })
 } catch(error){
