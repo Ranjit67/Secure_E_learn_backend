@@ -1,0 +1,35 @@
+### student signup
+POST http://localhost:9000/user/signup
+Content-Type: application/json
+
+{
+    "name":"ranjit",
+    "email":"sahogho2@gmail.com",
+    "password":"hotari"
+}
+
+### student signup
+POST http://localhost:9000/user/signIn
+Content-Type: application/json
+
+{
+  
+    "email":"sahoo",
+    "password":"hotari"
+}
+
+### get all mentor play list
+POST http://localhost:9000/getAllMentorPlaylist
+Content-Type: application/json
+Authorization:Barear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJEb3RlTGVhcm5lci5jb20iLCJuYW1lIjoiWW91ciB0cnVzdC4iLCJpYXQiOjE2MTc1NTk0NTEsImV4cCI6MTYxNzY2NzQ1MSwiYXVkIjoiNjA2NjZkZjE2MzhhMGIyNmMwYjhhMDI1In0.b4YtCz9GbRv0yad9ezg7ZaDGy1y5VURjAps4tCjBTT4
+
+
+
+
+### refresh token
+PATCH  http://localhost:9000/user/refreshtoken
+Content-Type: application/json
+
+{
+    "refershToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJEb3RlTGVhcm5lci5jb20iLCJuYW1lIjoiWW91ciB0cnVzdC4iLCJpYXQiOjE2MTczMzA5NzksImV4cCI6MTY0ODg4ODU3OSwiYXVkIjoiNjA2NjZkZjE2MzhhMGIyNmMwYjhhMDI1In0.bvEMj3BfnWtmXUpWMksHKj99j42AAvB7QsEFggT_4Js"
+}
